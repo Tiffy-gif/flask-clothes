@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Invoice</title>
+  <style>
+    .invoice-box {
+      margin: auto;
+      padding: 30px;
+      border: 1px solid #eee;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .company-info,
+    .client-info {
+      margin-bottom: 20px;
+    }
+    .company-info strong,
+    .client-info strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table thead {
+      background: #f5f5f5;
+    }
+    table th,
+    table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+    .totals {
+      margin-top: 30px;
+      width: 100%;
+    }
+    .totals td {
+      padding: 10px;
+    }
+    .totals .label {
+      text-align: right;
+      font-weight: bold;
+    }
+    .totals .value {
+      text-align: right;
+      width: 120px;
+    }
+  </style>
+</head>
+<body>
+  <div class="invoice-box">
+    <h1>INVOICE</h1>
+
+        <div class="company-info">
+          <strong>Nha Shopper</strong>
+          123 Business Street<br />
+          Phnom Penh, Cambodia<br />
+          Email: info@example.com
+        </div>
+
+        <div class="client-info">
+          <strong>Bill To:</strong>
+          Mr. Client Name<br />
+          client@example.com<br />
+          456 Customer Road
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Description</th>
+              <th>Qty</th>
+              <th>Unit Price</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Product A</td>
+              <td>2</td>
+              <td>$50.00</td>
+              <td>$100</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Product B</td>
+              <td>1</td>
+                <td><span id="lable_SubTotal_uds">$75.00</span></td>
+              <td id="lable_Total_uds">$75.00</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="totals">
+          <tr>
+            <td class="label">Subtotal:</td>
+            <td class="value">$175.00</td>
+          </tr>
+          <tr>
+            <td class="label">Tax (10%):</td>
+            <td class="value">$17.50</td>
+          </tr>
+          <tr>
+            <td class="label">Total:</td>
+            <td class="value"><strong>$192.50</strong></td>
+          </tr>
+        </table>
+  </div>
+<script>
+    let item_box = document.getElementById('item_box')
+    let carts = JSON.parse(localStorage.getItem('carts') ?? '[]')
+    document.getElementById('cart_item').value = JSON.stringify(carts)
+    let cart_item = ``
+    let total = 0
+    carts.forEach((item, index)=>{
+        total+=(item.price * item.qty)
+        cart_item += `
+             <div class="d-flex justify-content-between">
+                <p>${item.title}</p>
+                <p>${item.price} x ${item.qty}</p>
+                <li class="list-group mb-4">
+                <strong>$${(item.price*item.qty)}</strong>
+                </li>
+             </div>
+        `
+    })
+
+    item_box.innerHTML = ''
+    item_box.innerHTML = cart_item
+    total_khr= Math.ceil(total * 4100 / 100) * 100
+    document.getElementById('lable_SubTotal_uds').innerText = total.toFixed(2)
+    document.getElementById('lable_Total_uds').innerText = `${(total+10).toFixed(2)}`
+    document.getElementById('lable_Total_khr').innerText = `${(total_khr).toLocaleString()}`
+</script>
+</body>
+</html>
+
+

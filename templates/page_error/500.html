@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 - Internal Server Error</title>
+    <!-- Tailwind CSS CDN for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font 'Inter' for a clean, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen p-4">
+
+    <!-- Error content container -->
+    <div class="max-w-xl text-center">
+        <!-- Main error code -->
+        <h1 class="text-7xl md:text-8xl font-extrabold text-red-500">500</h1>
+
+        <!-- Error message title -->
+        <h2 class="text-3xl md:text-4xl font-bold mt-4">Internal Server Error</h2>
+
+        <!-- Descriptive message for the user -->
+        <p class="text-gray-400 text-lg mt-4">
+            Oops! Something went wrong on our end. We're working on it!
+        </p>
+
+        <p class="text-gray-400 text-lg mt-2">
+            You can try reloading the page or going back to the homepage.
+        </p>
+
+        <!-- Action buttons -->
+        <div class="mt-8 flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
+            <!-- Button to go back to the homepage -->
+            <a href="/" class="w-full md:w-auto px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors duration-300">
+                Go to Homepage
+            </a>
+            <!-- Button to reload the current page -->
+            <button onclick="window.location.reload();" class="w-full md:w-auto px-6 py-3 bg-gray-700 hover:bg-gray-600 text-gray-300 font-semibold rounded-lg transition-colors duration-300">
+                Reload Page
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>
