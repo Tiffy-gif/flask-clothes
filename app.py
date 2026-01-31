@@ -28,7 +28,7 @@ mail = Mail(app)
 
 # --- blocklist for revoked JTIs (in-memory demo) ---
 app.config['SQLALCHEMY_DATABASE_URI'] = (
-    'mysql+pymysql://root@localhost:3306/flaskClothes'
+    'mysql+pymysql://root@localhost:3306/flaskclothes'
 )
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
